@@ -24,7 +24,7 @@ class LoginRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'email' => 'required|string|email',
+            'login' => 'required|string',
             'password' => 'required|string|min:8',
         ];
     }
@@ -32,7 +32,7 @@ class LoginRequest extends FormRequest
     public function messages(): array
     {
         return [
-            'email.required' => 'Email tidak boleh kosong',
+            'login.required' => 'Username atau email tidak boleh kosong',
             'password.min' => 'Kata sandi harus berisi minimal 8 karakter',
             'password.required' => 'Kata sandi tidak boleh kosong'
         ];
