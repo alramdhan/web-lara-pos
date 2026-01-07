@@ -43,8 +43,6 @@ class KasirAuthController extends BaseController
         // Hapus token yang sedang digunakan
         $request->user()->currentAccessToken()->delete();
 
-        return response()->json([
-            'message' => 'Successfully logged out'
-        ]);
+        return $this->sendResponse(['message' => 'Sucessfully logged out']);
     }
 }
