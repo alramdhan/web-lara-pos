@@ -12,6 +12,6 @@ Route::post('/login', [KasirAuthController::class, 'login']);
 
 Route::middleware('auth:sanctum')->group(function() {
     Route::post('/logout', [KasirAuthController::class, 'logout']);
-    Route::get('/listKategori', [ProdukController::class, 'getKategoriProduk']);
-    Route::get('/allProduk', [ProdukController::class, 'getProducts']);
+    Route::get('/getKategori', [ProdukController::class, 'getKategoriProduk']);
+    Route::get('/getProduks', [ProdukController::class, 'getProducts']);
 });

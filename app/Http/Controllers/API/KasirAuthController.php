@@ -5,6 +5,7 @@ namespace App\Http\Controllers\API;
 use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Requests\LoginRequest;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use App\Http\Controllers\BaseController;
 
@@ -18,19 +19,21 @@ class KasirAuthController extends BaseController
     public function login(LoginRequest $request)
     {
         $validateData = $request->validated();
-        
-        $kasir = User::where('email', $validateData['email'])->first();
-        if (!$kasir || !Hash::check($validateData['password'], $kasir->password)) {
+        $fieldType = filter_var($validateData['login'], FILTER_VALIDATE_EMAIL) ? 'email' : 'username';
+
+        if(!Auth::attempt([$fieldType => $validateData['login'], 'password' => $validateData['password']]))
+        {
             return $this->sendError('Kredensial tidak valid', $code = 401);
         }
 
+        $kasir = Auth::user();
         // Hapus token lama jika diperlukan, lalu buat token baru
         $kasir->tokens()->delete();
         $token = $kasir->createToken('kasir-token', ['server:update'])->plainTextToken;
 
         return $this->sendResponse([
             'user' => $kasir,
-            'token' => $token,
+            'access_token' => $token,
         ], 'Login Berhasil');
     }
 

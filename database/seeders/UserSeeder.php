@@ -30,6 +30,7 @@ class UserSeeder extends Seeder
         ]);
         $cashier = User::create([
             'name' => 'kasir_1',
+            'username' => 'kasir1',
             'email' => 'kasir@gmail.com',
             'password' => 'secret321!'
         ]);
