@@ -23,7 +23,7 @@ class KasirAuthController extends BaseController
 
         if(!Auth::attempt([$fieldType => $validateData['login'], 'password' => $validateData['password']]))
         {
-            return $this->sendError('Kredensial tidak valid', $code = 401);
+            return $this->sendError('Kredensial tidak valid', [], $code = 401);
         }
 
         $kasir = Auth::user();
