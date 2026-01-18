@@ -17,7 +17,7 @@ class ProdukController extends BaseController
                 ->where('stok', '>', 0)->get();
     
             return $this->sendResponse([
-                'data' => $query
+                'produk' => $query
             ], 'Data berhasil diambil');
         } catch (Throwable $e) {
             return $this->sendError();
@@ -31,7 +31,7 @@ class ProdukController extends BaseController
                 ->get();
 
             return $this->sendResponse([
-                'data' => $query
+                'kategori' => $query
             ], 'Data berhasil diambil');
         } catch(Throwable $e) {
             return $this->sendError('gagal');
