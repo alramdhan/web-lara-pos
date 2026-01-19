@@ -42,14 +42,14 @@ class ProdukTableSeeder extends Seeder
             //     'name' => 'Manual Brew',
             //     'image' => asset('storage/image-kategori/manual-brew.png')
             // ],
-            // [
-            //     'name' => 'Signature Coffee',
-            //     'image' => asset('storage/image-kategori/signature-coffee.png')
-            // ],
-            // [
-            //     'name' => 'Bottled Coffee',
-            //     'image' => asset('storage/image-kategori/bottled-coffee.png')
-            // ],
+            [
+                'name' => 'Signature Coffee',
+                'image' => asset('storage/image-kategori/signature-coffee.png')
+            ],
+            [
+                'name' => 'Bottled Coffee',
+                'image' => asset('storage/image-kategori/bottled-coffee.png')
+            ],
         ];
         $produks = [
             [
@@ -65,5 +65,7 @@ class ProdukTableSeeder extends Seeder
                 'sort_order' => ($key+1)
             ]);
         }
+
+        $this->command->info('success seeding Produk data');
     }
 }
