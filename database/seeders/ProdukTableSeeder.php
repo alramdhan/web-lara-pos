@@ -2,7 +2,9 @@
 
 namespace Database\Seeders;
 
+use App\Models\Produk;
 use App\Models\Kategori;
+use Faker\Factory as Faker;
 use Illuminate\Database\Seeder;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
@@ -13,6 +15,7 @@ class ProdukTableSeeder extends Seeder
      */
     public function run(): void
     {
+        $faker = Faker::create();
         $dataKategori = [
             [
                 'name' => 'Makanan',
@@ -54,8 +57,67 @@ class ProdukTableSeeder extends Seeder
         $produks = [
             [
                 'kategori_id' => 1,
-                'nama_produk' => '',
-            ]
+                'nama_produk' => 'Kwetiaw Goreng',
+                'deskripsi' => 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
+                'sku' => $faker->unique()->bothify("SKU-######"),
+                'image' => asset('storage/produk/makanan.png'),
+                'harga' => $faker->numberBetween(15000, 50000),
+                'stok' => $faker->numberBetween(0, 100)
+            ],
+            [
+                'kategori_id' => 1,
+                'nama_produk' => 'Nasi Bakar',
+                'deskripsi' => 'Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s.',
+                'sku' => $faker->unique()->bothify("SKU-######"),
+                'image' => asset('storage/produk/makanan.png'),
+                'harga' => $faker->numberBetween(15000, 50000),
+                'stok' => $faker->numberBetween(0, 100)
+            ],
+            [
+                'kategori_id' => 1,
+                'nama_produk' => 'Bebek Goreng',
+                'deskripsi' => 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
+                'sku' => $faker->unique()->bothify("SKU-######"),
+                'image' => asset('storage/produk/makanan.png'),
+                'harga' => $faker->numberBetween(15000, 50000),
+                'stok' => $faker->numberBetween(0, 100)
+            ],
+            [
+                'kategori_id' => 2,
+                'nama_produk' => 'Jus Jeruk',
+                'deskripsi' => 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
+                'sku' => $faker->unique()->bothify("SKU-######"),
+                'image' => asset('storage/produk/minuman.png'),
+                'harga' => $faker->numberBetween(15000, 50000),
+                'stok' => $faker->numberBetween(0, 100)
+            ],
+            [
+                'kategori_id' => 2,
+                'nama_produk' => 'Es Teh Manis',
+                'deskripsi' => 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
+                'sku' => $faker->unique()->bothify("SKU-######"),
+                'image' => asset('storage/produk/minuman.png'),
+                'harga' => $faker->numberBetween(15000, 50000),
+                'stok' => $faker->numberBetween(0, 100)
+            ],
+            [
+                'kategori_id' => 2,
+                'nama_produk' => 'Teh Lemon',
+                'deskripsi' => 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
+                'sku' => $faker->unique()->bothify("SKU-######"),
+                'image' => asset('storage/produk/minuman.png'),
+                'harga' => $faker->numberBetween(15000, 50000),
+                'stok' => $faker->numberBetween(0, 100)
+            ],
+            [
+                'kategori_id' => 3,
+                'nama_produk' => 'Kentang Goreng',
+                'deskripsi' => 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
+                'sku' => $faker->unique()->bothify("SKU-######"),
+                'image' => asset('storage/produk/appetizer.png'),
+                'harga' => $faker->numberBetween(15000, 50000),
+                'stok' => $faker->numberBetween(0, 100)
+            ],
         ];
 
         foreach($dataKategori as $key => $kategori) {
@@ -64,6 +126,10 @@ class ProdukTableSeeder extends Seeder
                 'image' => $kategori['image'],
                 'sort_order' => ($key+1)
             ]);
+        }
+
+        foreach($produks as $key => $p) {
+            Produk::create($p);
         }
 
         $this->command->info('success seeding Produk data');

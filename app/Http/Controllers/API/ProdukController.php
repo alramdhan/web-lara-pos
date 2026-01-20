@@ -13,14 +13,14 @@ class ProdukController extends BaseController
     public function getProduk()
     {
         try {
-            $query = Produk::with('kategori')->where('is_active', true)
+            $query = Produk::where('is_active', true)
                 ->where('stok', '>', 0)->get();
     
             return $this->sendResponse([
                 'produk' => $query
             ], 'Data berhasil diambil');
         } catch (Throwable $e) {
-            return $this->sendError();
+            return $this->sendError('Terjadi kesalahan'.$e->getMessage());
         }
     }
 
