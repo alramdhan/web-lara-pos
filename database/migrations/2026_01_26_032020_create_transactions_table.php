@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('trx_invoice')->unique();
             $table->foreignId('user_id')->constrained('users')->onDelete('restrict');
-            $table->integer('total_belanja');
+            $table->decimal('total_belanja', 12, 2);
             $table->enum('status_pembayaran', ['pending', 'paid', 'failed', 'canceled', 'unpaid'])->default('unpaid');
             $table->enum('metode_pembayaran', ['cash', 'qris', 'transfer'])->default('cash');
             $table->decimal('pay_amount', 12, 2);

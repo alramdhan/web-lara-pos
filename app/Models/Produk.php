@@ -12,8 +12,8 @@ class Produk extends Model
         return $this->belongsTo(Kategori::class);
     }
 
-    public function transactioinItems()
+    public function transactionItems()
     {
-        return $this->hasMany(transactioinItems::class);
+        return $this->hasMany(TransactionItem::class);
     }
 }

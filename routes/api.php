@@ -2,6 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\API\OrderController;
 use App\Http\Controllers\API\ProdukController;
 use App\Http\Controllers\API\KasirAuthController;
 
@@ -19,5 +20,9 @@ Route::middleware('auth:sanctum')->group(function() {
 
     Route::prefix('produk')->group(function() {
         Route::get('/get-all', [ProdukController::class, 'getProduk']);
+    });
+
+    Route::prefix('/pos')->group(function() {
+        Route::post('/order/store', [OrderController::class, 'store']);
     });
 });
