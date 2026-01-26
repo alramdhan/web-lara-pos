@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string("image")->nullable();
             $table->decimal('harga', 12, 2);
             $table->integer('stok')->default(0);
+            $table->integer('hitungan_terjual')->default(0);
             $table->boolean('is_active')->default(true);
             $table->timestamps();
         });

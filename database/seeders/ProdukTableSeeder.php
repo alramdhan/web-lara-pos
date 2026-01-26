@@ -66,7 +66,7 @@ class ProdukTableSeeder extends Seeder
             ],
             [
                 'kategori_id' => 1,
-                'nama_produk' => 'Nasi Bakar',
+                'nama_produk' => 'Nasi Bakar dengan sambal super',
                 'deskripsi' => 'Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s.',
                 'sku' => $faker->unique()->bothify("SKU-######"),
                 'image' => asset('storage/produk/makanan.png'),
