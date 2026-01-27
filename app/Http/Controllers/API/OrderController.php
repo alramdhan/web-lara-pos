@@ -87,9 +87,7 @@ class OrderController extends BaseController
                 'status_pembayaran' => 'paid',
                 'metode_pembayaran' => $request->payment_method
             ]);
-
-            // 3. Simpan Detail Item
-            // Kita attach transaction_id ke array data tadi
+            
             foreach ($transactionItemsData as &$data) {
                 $data['transaction_id'] = $transaction->id;
             }
@@ -100,9 +98,10 @@ class OrderController extends BaseController
 
             return $this->sendResponse([
                 "message" => "transaksi berhasil",
-                "data" => $transaction->load('items.produk')
+                "data" => $transaction->load(['items.produk', 'cashier'])
             ], $code = 201);
         } catch(\Exception $e) {
+            DB::rollBack();
             return $this->sendError($e->getMessage());
         }
     }
