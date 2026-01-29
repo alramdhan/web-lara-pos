@@ -14,7 +14,7 @@ class ProdukController extends BaseController
     {
         try {
             $query = Produk::where('is_active', true)
-                ->where('stok', '>', 0)->get();
+                ->get();
     
             return $this->sendResponse([
                 'produk' => $query
