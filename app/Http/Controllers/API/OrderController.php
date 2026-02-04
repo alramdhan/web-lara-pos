@@ -40,7 +40,8 @@ class OrderController extends BaseController
             'items.*.produk_id' => 'required|exists:produks,id',
             'items.*.quantity' => 'required|integer|min:1',
             'pay_amount' => 'required|numeric',
-            'payment_method' => 'required|in:cash,qris,transfer'
+            'payment_method' => 'required|in:cash,qris,transfer',
+            'nama_pelanggan' => 'required|string'
         ]);
 
         if($validator->fails())
