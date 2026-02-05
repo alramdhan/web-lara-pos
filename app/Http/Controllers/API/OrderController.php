@@ -83,6 +83,7 @@ class OrderController extends BaseController
                 'trx_invoice' => 'INV-' . time() . '-' . Str::random(4),
                 'user_id' => Auth::id(),
                 'total_belanja' => $totalAmount,
+                'nama_pelanggan' => $request->nama_pelanggan,
                 'pay_amount' => $request->pay_amount,
                 'change_amount' => $request->pay_amount - $totalAmount,
                 'status_pembayaran' => 'paid',
