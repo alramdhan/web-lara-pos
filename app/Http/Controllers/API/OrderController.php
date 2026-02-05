@@ -97,10 +97,7 @@ class OrderController extends BaseController
 
             DB::commit();
 
-            return $this->sendResponse([
-                "message" => "transaksi berhasil",
-                "data" => $transaction->load(['items.produk', 'cashier'])
-            ], $code = 201);
+            return $this->sendResponse($transaction->load(['items.produk', 'cashier']), "transaksi_berhasil", $code = 201);
         } catch(\Exception $e) {
             DB::rollBack();
             return $this->sendError($e->getMessage());
