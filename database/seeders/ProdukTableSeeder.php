@@ -118,6 +118,33 @@ class ProdukTableSeeder extends Seeder
                 'harga' => $faker->numberBetween(15000, 50000),
                 'stok' => $faker->numberBetween(0, 100)
             ],
+            [
+                'kategori_id' => 4,
+                'nama_produk' => 'Egg Caramel Pudding',
+                'deskripsi' => 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
+                'sku' => $faker->unique()->bothify("SKU-######"),
+                'image' => asset('storage/produk/egg-caramel-pudding.webp'),
+                'harga' => 25000,
+                'stok' => 3
+            ],
+            [
+                'kategori_id' => 4,
+                'nama_produk' => 'Waffle',
+                'deskripsi' => 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
+                'sku' => $faker->unique()->bothify("SKU-######"),
+                'image' => asset('storage/produk/waffle.jpg'),
+                'harga' => 18000,
+                'stok' => 5
+            ],
+            [
+                'kategori_id' => 5,
+                'nama_produk' => 'Mashed Potato',
+                'deskripsi' => 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
+                'sku' => $faker->unique()->bothify("SKU-######"),
+                'image' => asset('storage/produk/mashed-potato.jpg'),
+                'harga' => $faker->numberBetween(15000, 50000),
+                'stok' => 0
+            ],
         ];
 
         foreach($dataKategori as $key => $kategori) {
